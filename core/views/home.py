@@ -48,6 +48,6 @@ class HomeView(generic.TemplateView):
             pmodel.save()
 
             # pasamos el modelo al service detection
-            #Detection.detection(pmodel)
+            Detection.detection(pmodel)
 
             return redirect('core:analysis', pk=pmodel.pk)
