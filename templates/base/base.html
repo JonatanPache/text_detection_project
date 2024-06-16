@@ -1,0 +1,243 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/flaticon.css' %}" />
+    <!-- Boxicons CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/boxicons.min.css' %}" />
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/owl.theme.default.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/owl.carousel.min.css' %}"
+    />
+    <!-- Magnific Popup CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/magnific-popup.min.css' %}"
+    />
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}" />
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+    <!-- Theme Dark CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/theme-dark.css' %}" />
+
+    <title>Proyecto</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% static 'assets/img/favicon.png' %}"
+    />
+  </head>
+  <body>
+    <!-- Pre Loader -->
+    <div class="preloader">
+      <div class="d-table">
+        <div class="d-table-cell">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+    <!-- End Pre Loader -->
+
+    <!-- Start Navbar Area -->
+    <div class="navbar-area">
+      <!-- Menu For Mobile Device -->
+      <div class="mobile-nav">
+        <a href="{% url 'core:home' %}" class="logo">
+          <img
+            src="{% static 'assets/img/logo/logo1.png' %}"
+            class="logo-one"
+            alt="Logo"
+          />
+          <img
+            src="{% static 'assets/img/logo/logo2.png' %}"
+            class="logo-two"
+            alt="Logo"
+          />
+        </a>
+      </div>
+
+      <!-- Menu For Desktop Device -->
+      <div class="main-nav">
+        <div class="container-fluid">
+          <nav class="container-max-2 navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="{% url 'core:home' %}">
+              <img
+                src="{% static 'assets/img/logo/logo1.png' %}"
+                class="logo-one"
+                alt="Logo"
+              />
+              <img
+                src="{% static 'assets/img/logo/logo2.png' %}"
+                class="logo-two"
+                alt="Logo"
+              />
+            </a>
+
+            <div
+              class="collapse navbar-collapse mean-menu"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">
+                    Home
+                    <i class="bx bx-plus"></i>
+                  </a>
+                </li>
+              </ul>
+
+              <div class="side-nav d-in-line align-items-center">
+                <div class="side-item">
+                  <div class="search-box">
+                    <i class="flaticon-loupe"></i>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn">
+                      Contact us
+                      <i class="bx bx-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="side-nav-responsive">
+        <div class="container">
+          <div class="dot-menu">
+            <div class="circle-inner">
+              <div class="circle circle-one"></div>
+              <div class="circle circle-two"></div>
+              <div class="circle circle-three"></div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="side-nav-inner">
+              <div class="side-nav justify-content-center align-items-center">
+                <div class="side-item">
+                  <div class="search-box">
+                    <i class="flaticon-loupe"></i>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="user-btn">
+                    <a href="#">
+                      <i class="flaticon-contact"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <div class="nav-add-btn">
+                    <a href="#" class="nav-menu-btn border-radius">
+                      Contact us
+                      <i class="bx bx-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Navbar Area -->
+
+    {% block content %} {% endblock %}
+
+    <footer class="footer-area footer-bg pt-100 pb-70">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-sm-6">
+              <div class="footer-img">
+                <img
+                  src="{% static 'assets/img/logo/logo1.png' %}"
+                  class="footer-img1"
+                  alt="Images"
+                />
+                <img
+                  src="{% static 'assets/img/logo/logo2.png' %}"
+                  class="footer-img2"
+                  alt="Images"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-6">
+              <div class="footer-social-icon">
+                <ul class="social-link">
+                  <li>
+                    <a href="#" target="_blank"
+                      ><i class="bx bxl-facebook"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy-right-area">
+          <div class="copy-right-text text-center">
+            <p>
+              Copyright @
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              Ing. Calidad. Grupo Nro ..
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Jquery Min JS -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap Bundle Min JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Wow Min JS -->
+    <script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <!-- Owl Carousel Min JS -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <!-- Magnific Popup Min JS -->
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Meanmenu JS -->
+    <script src="{% static 'assets/js/meanmenu.js' %}"></script>
+    <!-- Ajaxchimp Min JS -->
+    <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+    <!-- Form Validator Min JS -->
+    <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <!-- Contact Form JS -->
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+  </body>
+</html>

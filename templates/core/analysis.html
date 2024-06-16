@@ -1,0 +1,80 @@
+{% extends "base/base.html" %} {% load static %} {% block content %}
+
+<!-- Service Details Area -->
+<div class="service-details-area pt-100 pb-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="service-left">
+          <div class="service-content">
+            <!-- Mostrar la imagen original -->
+            {% if pmodel.picture %}
+            <img src="{{ pmodel.picture.url }}" alt="Imagen Original" />
+            <h2>Imagen Original</h2>
+            <p>Esta es la imagen original cargada.</p>
+            {% endif %}
+          </div>
+
+          <div class="content-widget-area">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="content-widget-img">
+                  <!-- Mostrar la imagen procesada -->
+                  {% if pmodel.pictureOutput %}
+                  <img
+                    src="{{ pmodel.pictureOutput.url }}"
+                    alt="Imagen Procesada"
+                  />
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="content-widget-text">
+                  <h2>Placa Reconocida</h2>
+                  <p>
+                    A continuación se muestra la información reconocida de la
+                    placa:
+                  </p>
+                  <ul>
+                    <li>
+                      <i class="bx bx-check"></i>
+                      {{ ocr }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="service-widget-right">
+          <div class="service-widget-two">
+            <h2>Service</h2>
+            <ul>
+              {% comment %} <li>
+                <i class="flaticon-pdf-file"></i>
+                <div class="content">
+                  <h3>01:</h3>
+                  <span><a href="#">PDF Download</a></span>
+                </div>
+              </li>{% endcomment %}
+              <li> 
+                <i class="flaticon-clipboard"></i>
+                <div class="content"  onclick="copy()">
+                  <h3>01:</h3>
+                  <span><a href="#">Txt File Copiar</a></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Service Details Area End -->
+
+{% endblock %}
