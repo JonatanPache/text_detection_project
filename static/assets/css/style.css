@@ -3393,8 +3393,9 @@ Service Area End
 Service Details Area 
 =================================*/
 .service-left {
-  margin-top: 150px;
+  margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 50px;
 }
 
 .service-left p {
@@ -3403,7 +3404,7 @@ Service Details Area
 
 .service-content img {
   margin-bottom: 30px;
-  width: 70%;
+  width: 80%;
 }
 
 .service-content h2 {

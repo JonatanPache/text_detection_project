@@ -52,18 +52,25 @@
       <div class="col-lg-4">
         <div class="service-widget-right">
           <div class="service-widget-two">
-            <h2>Service</h2>
+            <h2>Opciones</h2>
             <ul>
-              {% comment %} <li>
+              <li>
                 <i class="flaticon-pdf-file"></i>
-                <div class="content">
-                  <h3>01:</h3>
-                  <span><a href="#">PDF Download</a></span>
-                </div>
-              </li>{% endcomment %}
-              <li> 
+                <form id="download-pdf-form"
+                  method="post"
+                  action="{% url 'core:analysis' pmodel.pk %}"
+                >
+                  {% csrf_token %}
+                  <input type="hidden" name="action" value="download_pdf" />
+                  <div class="content">
+                    <h3>01:</h3>
+                    <span><a href="#" name="action" value="download_pdf"  onclick="document.getElementById('download-pdf-form').submit()">PDF Download</a></span>
+                  </div>
+                </form>
+              </li>
+              <li>
                 <i class="flaticon-clipboard"></i>
-                <div class="content"  onclick="copy()">
+                <div class="content" onclick="copyToClipboard()">
                   <h3>01:</h3>
                   <span><a href="#">Txt File Copiar</a></span>
                 </div>
@@ -76,5 +83,18 @@
   </div>
 </div>
 <!-- Service Details Area End -->
+
+<script>
+  function copyToClipboard() {
+    var textToCopy = "{{ ocr }}";
+    var tempInput = document.createElement("textarea");
+    tempInput.value = textToCopy;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Texto copiado al portapapeles: " + textToCopy);
+  }
+</script>
 
 {% endblock %}
