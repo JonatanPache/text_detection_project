@@ -4,10 +4,21 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-DEBUG=os.environ.get("DEBUG")
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 PRODUCTION=os.environ.get("PRODUCTION")
 SECRET_KEY=os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS=os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+
+
+if 'test' in sys.argv:
+    DEBUG = False  # Ensure DEBUG is False during tests
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: False,
+    }
+else:
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+    }
 
 
 # Database
