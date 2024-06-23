@@ -25,7 +25,9 @@ class Detection:
         :return: Diccionario con los resultados del análisis
         """
         img = cv2.imread(picture_instance.picture.path)
-        return Detection.processImg(img)
+        img_out_url =  Detection.processImg(img)
+        picture_instance.pictureOutput = img_out_url
+        picture_instance.save()
         
         
         
