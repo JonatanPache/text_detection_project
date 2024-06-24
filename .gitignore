@@ -5,7 +5,7 @@ frontend/*
 *.pot
 *.pyc
 __pycache__
-*/__pycache__
+**/__pycache__
 mediafiles/pictures/*
 db.sqlite3
 media

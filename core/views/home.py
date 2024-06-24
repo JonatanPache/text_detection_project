@@ -22,6 +22,11 @@ class HomeView(generic.TemplateView):
     template_root = "core/"
     template_name= template_root + "index.html"
     form_class = UploadForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['formFile'] = self.form_class()
+        return context
 
     def post(self, request):
         '''
@@ -48,6 +53,6 @@ class HomeView(generic.TemplateView):
             pmodel.save()
 
             # pasamos el modelo al service detection
-            Detection.detection(pmodel)
+            # Detection.detection(pmodel)
 
             return redirect('core:analysis', pk=pmodel.pk)

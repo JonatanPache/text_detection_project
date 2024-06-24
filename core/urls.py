@@ -11,7 +11,7 @@ app_name : str
 
 urlpatterns = [
 
-    path("", views.HomeView.as_view(), name="home"),
+    path('', views.HomeView.as_view(), name='home'),
 
     path('analysis/<uuid:pk>/', views.AnalysisView.as_view(), name='analysis'),
 
