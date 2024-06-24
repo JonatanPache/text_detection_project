@@ -39,9 +39,6 @@ class Detection:
             picture_instance.extractedText = extracted_text
             picture_instance.save()
         
-        
-        
-        
     
     @staticmethod
     def processImg(img):  
