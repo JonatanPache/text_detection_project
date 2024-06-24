@@ -43,3 +43,5 @@ class Picture(ActivatorModel, TimeStampedModel, Model):
     blank : bool
         Indica si el campo puede estar en blanco en los formularios (True) o no (False).
     """
+
+    extractedText = models.TextField(blank=True, null=True)

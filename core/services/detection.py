@@ -1,8 +1,8 @@
 
 from django.conf import settings
-
+from PIL import Image
 from core.models.picture import Picture
-
+import numpy as np
 import cv2
 import easyocr
 import os
@@ -17,17 +17,27 @@ class Detection:
     """
     
     @staticmethod
-    def detection(picture_instance):
+    def detection(picture_instance: Picture):
         """
         Analiza la instancia de Picture y devuelve los resultados del análisis.
 
         :param picture_instance: Instancia del modelo Picture
         :return: Diccionario con los resultados del análisis
         """
-        img = cv2.imread(picture_instance.picture.path)
-        img_out_url =  Detection.processImg(img)
-        picture_instance.pictureOutput = img_out_url
-        picture_instance.save()
+        path = picture_instance.picture.path
+        try:
+            with Image.open(path) as img:
+                img = np.array(img)
+                print(f"Image read successfully with PIL from: {path}")
+        except Exception as e:
+            print(f"Failed to read image with PIL from: {path}, error: {e}")
+            img = None
+
+        if img is not None:
+            extracted_text, img_out_url = Detection.processImg(img)
+            picture_instance.pictureOutput = img_out_url
+            picture_instance.extractedText = extracted_text
+            picture_instance.save()
         
         
         
@@ -54,23 +64,26 @@ class Detection:
         output_filename = DetectionService.processImg(img)
         """          
         # Instancia del detector de texto
-        reader = easyocr.Reader(['en'], gpu=False)
+        reader = easyocr.Reader(['es'], gpu=False)
             
         # Detecta texto en la imagen
         text_ = reader.readtext(img)
         
         threshold = 0.25
-            
+        extracted_text = ""
+
         # Dibuja las cajas de texto y el texto detectado en la imagen
         for t_ in text_:
             bbox, text, score = t_
             if score > threshold:
-                cv2.rectangle(img, tuple(bbox[0]), tuple(bbox[2]), (0, 255, 0), 2)
-                cv2.putText(img, text, tuple(bbox[0]), cv2.FONT_HERSHEY_COMPLEX, 0.65, (255, 0, 0), 2)
-            
+                top_left = tuple(map(int, bbox[0]))
+                bottom_right = tuple(map(int, bbox[2]))
+                cv2.rectangle(img, top_left, bottom_right, (0, 255, 0), 2)
+                cv2.putText(img, text, top_left, cv2.FONT_HERSHEY_COMPLEX, 0.65, (255, 0, 0), 2)
+                extracted_text += text + " "
         # Guarda la imagen procesada
         output_filename = 'output.png'
         output_path = os.path.join(settings.MEDIA_ROOT, output_filename)
         cv2.imwrite(output_path, img)
             
-        return output_filename
+        return extracted_text.strip(), output_filename

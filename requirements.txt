@@ -1,9 +1,11 @@
 django==5.0.6
-easyocr==1.6.2
+easyocr==1.7.1
 matplotlib==3.7.1
-opencv-python-headless==4.5.4.60
+opencv-python-headless==4.10.0.84
 numpy==1.24.2
 django-extensions==3.2.3
 django-ckeditor==6.7.1
-pillow==9.5.0 
+pillow==10.3.0
 weasyprint==62.2
+python-dotenv==1.0.1
+django-debug-toolbar==4.4.2
